@@ -1,0 +1,640 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="index_files/style.css">
+
+
+<script src="index_files/video.js"></script>
+<script type="text/javascript">
+
+function show_play(){
+  document.getElementById('play_all').innerHTML = " &#9654;";
+}
+
+function show_pause(){
+  document.getElementById('play_all').innerHTML = "<b>||</b>";
+}
+
+
+window.onload = function () {
+  var x = document.getElementsByTagName('video');
+
+  for (i = 0; i < x.length; i++) {
+    x[i].onended=function(e) {
+      show_play();
+      document.getElementById("play_all").onclick=function(){play_all_videos();};
+      restart_all_videos();
+      play_all_videos();    
+    };
+  }
+}
+
+
+function play_all_videos(){
+  var x = document.getElementsByTagName("video");
+  var i;
+  for (i = 0; i < x.length; i++) {
+    x[i].playbackRate = 0.5;
+    x[i].play();
+  }
+  show_pause();
+
+  document.getElementById("play_all").onclick=function(){pause_all_videos();};
+}
+
+
+function pause_all_videos(){
+  var x = document.getElementsByTagName("video");
+  var i;
+  for (i = 0; i < x.length; i++) {
+    x[i].pause();
+  }
+  show_play()
+  document.getElementById("play_all").onclick=function(){play_all_videos();};
+}
+
+
+function restart_all_videos() {
+  var x = document.getElementsByTagName("video");
+  show_play();
+  for (i = 0; i < x.length; i++) {
+      x[i].currentTime = 0;
+      x[i].pause();
+  }
+}
+
+function skip_all_videos(value) {
+  var x = document.getElementsByTagName("video");
+  for (i = 0; i < x.length; i++) {
+      x[i].currentTime += value;
+  }
+}
+
+function seek_all_videos(value) {
+  var x = document.getElementsByTagName("video");
+  for (i = 0; i < x.length; i++) {
+      x[i].currentTime = value;
+  }
+}
+
+</script>
+
+<style>
+.gallery2 {
+    position: relative;
+    width: auto;
+    height: 400px; }
+.gallery2 .index {
+    padding: 0;
+    margin: 0;
+    width: 10.5em;
+    list-style: none; }
+.gallery2 .index li {
+    margin: 0;
+    padding: 0;
+    float: left;}
+.gallery2 .index a { /* gallery2 item title */
+    display: block;
+    background-color: #EEEEEE;
+    border: 1px solid #FFFFFF;
+    text-decoration: none;
+    width: 1.9em;
+    padding: 6px; }
+.gallery2 .index a span { /* gallery2 item content */
+    display: block;
+    position: absolute;
+    left: -9999px; /* hidden */
+    top: 0em;
+    padding-left: 0em; }
+.gallery2 .index a span img{ /* gallery2 item content */
+    width: 75%;
+    }
+.gallery2 .index li:first-child a span {
+    top: 0em;
+    left: 10.5em;
+    z-index: 99; }
+.gallery2 .index a:hover {
+    border: 1px solid #888888; }
+.gallery2 .index a:hover span {
+    left: 10.5em;
+    z-index: 100; }
+</style>
+
+<style>
+   .gallery{position:relative;width:auto;height:400px}
+   .gallery .index{padding:0;margin:0;width:11em;list-style:none}
+   .gallery .index li{margin:0;padding:0} 
+   .gallery .index a{display:block;background-color:#eee;border:1px solid #fff;text-decoration:none;width:6em;padding:5px;font-size:16px;}
+   .gallery .index a span{display:block;position:absolute;left:-9999px;top:0;padding-left:2em}
+   .gallery .index li:first-child a span{left:5em;z-index:99}
+   .gallery .index a:hover{ border: 1px solid #888888;}
+   .gallery .index a:hover span{left:5em;z-index:100}
+   .gallery .index a span img{ width: 90%; }
+</style>
+
+<style type="text/css">
+  .tftable {
+    font-size:16px;
+    color:#333333;
+    border-width:2px;
+    border-color:#729ea5;
+    border-collapse:collapse;
+  }
+  .tftable th {
+    font-size:16px;
+    background-color:#acc8cc;
+    border-width: 1px;
+    padding: 10px;
+    border-style: solid;
+    border-color: #729ea5;
+    text-align:center;
+  }
+  .tftable td {
+    font-size:16px;
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #729ea5;
+    white-space: nowrap;
+  }
+  .tftable tr {
+    background-color:#ffffff;
+  }
+  .tftable tr:hover {
+    background-color:#d6e4e6;
+  }
+  .noborders td {
+    border:0;
+  }
+</style>
+
+
+
+
+<title>NL-Kalman</title>
+<style type="text/css">
+.style1 {font-family: "Courier New", Courier, mono}
+.style2 {font-family: "Times New Roman", Times, serif}
+//.style4 {font-size: 16px}
+.style4 {}
+//.style6 {font-size: 20px; font-family: sans-serif}
+//.style7 {font-size: 20px; font-family: sans-serif}
+.style6 {font-family: sans-serif}
+.style7 {font-family: sans-serif}
+.style9 {font-family: "Times New Roman", Times, serif; font-size: large; }
+</style>
+</head><body>
+<a name="#ref_topofpage"></a>
+
+	<h1>
+	<br>
+	<b>Non-Local Kalman: a recursive video denoising algorithm</b>
+	<br>
+	<br>
+	<span style="font: normal normal normal x-large sans-serif;"> Thibaud Ehret, Jean-Michel Morel, Pablo Arias
+	<br>
+	<a href="http://www.cmla.ens-cachan.fr/" style="color:black;">CMLA</a>,
+	<a href="http://www.ens-cachan.fr/" style="color:black;">ENS Paris-Saclay</a>
+	<br></span>
+	</h1>
+	<br>
+
+
+<hr width="100%" size="1" align="left">
+<h2><b>Overview<a name="ref_problems"></a> </b></h2>
+<br>
+<p style="width:100%" class="style7" align="justify">
+In this article we propose a new recursive video denoising method with high performance. The method is recursive  and uses only the current frame and the previous denoised one. It considers the video as a set of overlapping temporal patch trajectories. Following a Bayesian approach each trajectory is modeled as linear dynamic Gaussian model and denoised by a Kalman filter. To estimate its parameters, similar patches are grouped and their trajectories are considered as sharing the same model parameters. The filtering is mainly temporal; non-local spatial similarity is only used to estimate the parameters. This temporally causal method obtains results comparable (in terms of PSNR and SSIM) to state-of-the-art methods  using several frames per frame denoised, but with a higher temporal consistency. 
+</p>
+
+<!--center>
+<figure>
+  <img src="vnlb_files/patch_groups_coor.png" alt="Group of similar patches" width="800">
+
+  <figcaption class="style6" style="text-align:justify;"><b>Fig. 1:</b>
+    Examples of sets of 200 nearest neighbors spatio-temporal patches,
+    for patches of size 9<em>x</em>9<em>x</em>4.
+    The images in each row show the five frames of a 37<em>x</em>37<em>x</em>5 search region. 
+    In red we show the positions of the 5 nearest neighbors, in green the next 40 and in blue the rest.
+    Note that the points shown correspond to the top-left pixel of the first spatial
+    slice of each patch.
+    The reference patch is the red patch in the center of the search region. To highlight the
+    position of the patches, the color of the images has been attenuated.
+  </figcaption>
+</figure>
+</center-->
+
+<br>
+
+
+<hr width="100%" size="1" align="left">
+<h2><b>Publications<a name="ref_publications"></a> </b></h2>
+<br>
+
+<p class="style7" style="width:100%" align="justify">
+<a href="https://tehret.github.io/paper.pdf">
+Thibaud Ehret, Jean-Michel Morel, Pablo Arias
+<em> Non-Local Kalman: a recursive video denoising algorithm</em>
+ICIP 2018.
+</a>
+</p>
+
+<br>
+
+
+<hr width="100%" size="1" align="left">
+<h2><b>Results on grayscale sequences<a name="ref_results_gray" id="ref_results_gray"></a></b></h2>
+<br>
+
+
+
+<div align="center">
+  <div class="style6" width="20em">
+    <br>
+    <b>Results on the <em>pedestrian area</em> test sequence with a noise of standard deviation 30.</b>
+    <br>
+  </div>
+
+<table>
+   <tbody><tr>
+    <td> 
+      <button id="restart_all" onclick="restart_all_videos()">◼</button> 
+<!--      <button id="rew_all" onclick="skip_all_videos(-3);" border="0"> &lt;&lt; </button> -->
+      <button id="rew_all" onclick="seek_all_videos(0);" border="0"> &lt;&lt; </button>
+      <button id="play_all" onclick="play_all_videos();" border="0"> ▶</button>
+<!--      <button id="fastFwd_all" onclick="skip_all_videos(3);"> &gt;&gt; </button> -->
+    </td>
+  </tr>
+</tbody></table>
+
+<div class="gallery" style="height:500px" align="left">
+	<ul class="index">
+		<li><a href="#">BM4D-OF<span><video controls="controls" height="500">
+	<source src="index_files/bm4dof_pedestrian_area_s20.mp4">
+	Your browser does not support the video tag.
+      </video></span></a></li>
+		<li><a href="#">NOISY σ=20<span><video controls="controls" height="500">
+	<source src="index_files/noisy_pedestrian_area_s20.mp4">
+	Your browser does not support the video tag.
+      </video></span></a></li>
+		<li><a href="#">VNLDCT<span><video controls="controls" height="500">
+	<source src="index_files/vnldct_pedestrian_area_s20.mp4">
+	Your browser does not support the video tag.
+      </video></span></a></li>
+		<li><a href="#">VNLB<span><video controls="controls" height="500">
+	<source src="index_files/vnlb_pedestrian_area_s20.mp4">
+	Your browser does not support the video tag.
+      </video></span></a></li>
+		<li><a href="#">SPTWO<span><video controls="controls" height="500">
+	<source src="index_files/sptwo_pedestrian_area_s20.mp4">
+	Your browser does not support the video tag.
+      </video></span></a></li>
+	</ul>
+</div>
+
+
+</div>
+<br>
+<br>
+
+
+
+<!--p class="style7" style="width:100%" align="justify">
+In the table bellow, we show results obtained for seven 960x540 grayscale test sequences. The sequences were
+taken from Derf's video databased. The originals are RGB sequences of resolution 1920x1080. We converted
+them to grayscale by averaging the channels and downscaled them.
+
+<br>
+<br>
+The sequence names in the table header and some of the PSNR values in the table
+are links to the corresponding videos. The videos are uncompressed.
+
+<br>
+<br>
+We compared the following algorithms:
+<br>
+</p><dl>
+	<dt><b>SPTWO:</b></dt>
+	<dd>
+		Method of <a href="https://doi.org/10.1109/TIP.2016.2551639">[Buades, Lisani, Miladinović, 2016]</a>
+	</dd>
+	<dt><b>V-BM4D-mp:</b></dt>
+	<dd>
+		<a href="http://www.cs.tut.fi/%7Efoi/GCF-BM3D/VBM4D_v1.zip">author's implementation</a> of
+		<a href="http://dx.doi.org/10.1109/TIP.2012.2199324">[Maggioni et al. 2012]</a>
+		setting the parameters according to the <em>modified profile</em> (best parameter profile available)
+	</dd>
+	<dt><b>V-BM3D-np:</b></dt>
+	<dd>
+		<a href="http://www.cs.tut.fi/%7Efoi/GCF-BM3D/BM3D.zip">author's implementation</a> of
+		<a href="http://ieeexplore.ieee.org/document/7098781/">[Dabov, Foi, Egiazarian, 2007]</a>
+		setting the parameters according to the <em>normal profile</em> (best parameter profile available)
+	</dd>
+	<dt><b>VNLB:</b></dt>
+	<dd>
+		Method of <a href="https://doi.org/10.1007/s10851-017-0742-4">[Arias, Morel, 2017]</a>, using the
+		hard-thresholding estimator for the <em>a priori</em> variances (VNLB-H
+		in the paper), with a 3D patch size of 10x10x2.
+	</dd>
+	<dt><b>VNLDCT:</b></dt>
+	<dd>
+		Version of the block DCT denoising using a Wiener filter estimated from
+		similar patches. Patch size: 10x10x2. <a href="http://dev.ipol.im/~pariasm/video_denoising_models/vnlb_files/paper.pdf">See the article for more details.</a>
+	</dd>
+	<dt><b>BM4D-OF:</b></dt>
+	<dd>
+	Slightly modified version of the BM4D method <a href="http://doi.org/10.1109/TIP.2012.2210725">[Maggioni et al. 2013]</a> 
+	using 3D patches 10x10x2. <a href="http://dev.ipol.im/~pariasm/video_denoising_models/vnlb_files/paper.pdf">See the article for more details.</a>
+	</dd>
+</dl> 
+<p></p>
+
+<br>
+<br>
+
+<table class="tftable" border="1" align="center">
+  <caption class="style6">
+    <b>PSNR (dB) results on 960x540 grayscale test sequences.</b>
+    <br>
+    Click on the PSNR values to download a zip containing the corresponding result.
+    <br>
+    The highest PSNR for each sequence and noise level is written in <b>boldface</b>. 
+    <br>
+    <br>
+  </caption>
+
+<tbody>
+<tr align="center">
+  <th>σ
+  </th><th class="">Method
+  </th><th><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run.mp4">crowd      </a>
+  </th><th><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy.mp4">park joy   </a>
+  </th><th><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area.mp4">pedestrians</a>
+  </th><th><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2.mp4">station    </a>
+  </th><th><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower.mp4">sunflower  </a>
+  </th><th><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass.mp4">touchdown  </a>
+  </th><th><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor.mp4">tractor    </a>
+  </th><th>                               Average        
+</th></tr>
+
+<tr align="center">
+  <th rowspan="7">10</th>
+  <td align="left">Noisy   </td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run_s10.zip">       28.13         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy_s10.zip">       28.13         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area_s10.zip">       28.13         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2_s10.zip">       28.13         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower_s10.zip">       28.13         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass_s10.zip">       28.13         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor_s10.zip">       28.13         </a></td>
+  <td>                                          28.13             </td>
+</tr>
+<tr align="center">
+  <td align="left">SPTWO </td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run_s10.zip">       36.57         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy_s10.zip">       35.87         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area_s10.zip">       41.02         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2_s10.zip">       41.24         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower_s10.zip">       42.84         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass_s10.zip">       40.45         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor_s10.zip">       38.92         </a></td>
+  <td>                                                   39.56             </td>
+</tr>
+<tr align="center">
+  <td align="left">V-BM3D-np </td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run_s10.zip">       35.76         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy_s10.zip">       35.00         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area_s10.zip">       40.90         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2_s10.zip">       39.14         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower_s10.zip">       40.13         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass_s10.zip">       39.25         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor_s10.zip">       37.51         </a></td>
+  <td>                                                        38.24             </td>
+</tr>
+<tr align="center">
+  <td align="left">V-BM4D-mp </td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run_s10.zip">       36.05         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy_s10.zip">       35.31         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area_s10.zip">       40.61         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2_s10.zip">       40.85         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower_s10.zip">       41.88         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass_s10.zip">       39.79         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor_s10.zip">       37.73         </a></td>
+  <td>                                                        38.88             </td>
+</tr>
+<tr align="center">
+  <td align="left">VNLB</td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run_s10.zip"><b>    37.24     </b></a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy_s10.zip"><b>    36.48     </b></a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area_s10.zip"><b>    42.23     </b></a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2_s10.zip"><b>    42.14     </b></a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower_s10.zip"><b>    43.70     </b></a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass_s10.zip"><b>    41.23     </b></a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor_s10.zip"><b>    40.20     </b></a></td>
+  <td>                                             <b>    40.57     </b>    </td>
+</tr>
+<tr align="center">
+  <td align="left">VNLDCT</td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run_s10.zip">       35.96         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy_s10.zip">       35.23         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area_s10.zip">       41.37         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2_s10.zip">       41.12         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower_s10.zip">       42.43         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass_s10.zip">       40.37         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor_s10.zip">       39.00         </a></td>
+  <td>                                                    39.35             </td>
+</tr>
+<tr align="center">
+  <td align="left">BM4D-OF</td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run_s10.zip">       35.86         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy_s10.zip">       35.15         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area_s10.zip">       41.55         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2_s10.zip">       41.75         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower_s10.zip">       42.76         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass_s10.zip">       40.62         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor_s10.zip">       39.09         </a></td>
+  <td>                                                    39.54             </td>
+</tr>
+
+<tr><th colspan="15" style="background-color:#729ea5;padding:2px"></th></tr>
+
+<tr align="center">
+  <th rowspan="7">20</th>
+  <td align="left">Noisy   </td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run_s20.zip">       22.11         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy_s20.zip">       22.11         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area_s20.zip">       22.11         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2_s20.zip">       22.11         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower_s20.zip">       22.11         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass_s20.zip">       22.11         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor_s20.zip">       22.11         </a></td>
+  <td>                                          22.11             </td>
+</tr>
+<tr align="center">
+  <td align="left">SPTWO </td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run_s20.zip">       32.94         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy_s20.zip">       32.35         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area_s20.zip">       37.01         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2_s20.zip">       38.09         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower_s20.zip">       38.83         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass_s20.zip"><b>    37.55     </b></a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor_s20.zip">       35.15         </a></td>
+  <td>                                                        35.99             </td>
+</tr>
+<tr align="center">
+  <td align="left">V-BM3D-np </td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run_s20.zip">       32.34         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy_s20.zip">       31.50         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area_s20.zip">       37.06         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2_s20.zip">       35.91         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower_s20.zip">       36.25         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass_s20.zip">       36.17         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor_s20.zip">       33.53         </a></td>
+  <td>                                                        34.68             </td>
+</tr>
+<tr align="center">
+  <td align="left">V-BM4D-mp </td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run_s20.zip">       32.40         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy_s20.zip">       31.60         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area_s20.zip">       36.72         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2_s20.zip">       36.84         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower_s20.zip">       37.78         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass_s20.zip">       36.44         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor_s20.zip">       33.95         </a></td>
+  <td>                                                        35.10             </td>
+</tr>
+<tr align="center">
+  <td align="left">VNLB</td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run_s20.zip"><b>    33.49     </b></a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy_s20.zip"><b>    32.80     </b></a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area_s20.zip"><b>    38.61     </b></a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2_s20.zip"><b>    38.78     </b></a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower_s20.zip"><b>    39.82     </b></a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass_s20.zip">       37.47         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor_s20.zip"><b>    36.67     </b></a></td>
+  <td>                                             <b>    36.81     </b>    </td>
+</tr>
+<tr align="center">
+  <td align="left">VNLDCT</td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run_s20.zip">       32.62         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy_s20.zip">       31.94         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area_s20.zip">       37.88         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2_s20.zip">       37.88         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower_s20.zip">       38.92         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass_s20.zip">       37.15         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor_s20.zip">       35.58         </a></td>
+  <td>                                                    36.00             </td>
+</tr>
+<tr align="center">
+  <td align="left">BM4D-OF</td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run_s20.zip">       32.52         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy_s20.zip">       31.79         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area_s20.zip">       38.14         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2_s20.zip">       38.22         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower_s20.zip">       39.38         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass_s20.zip">       37.51         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor_s20.zip">       35.76         </a></td>
+  <td>                                                    36.19             </td>
+</tr>
+
+<tr><th colspan="15" style="background-color:#729ea5;padding:2px"></th></tr>
+
+
+<tr align="center">
+  <th rowspan="7">40</th>
+  <td align="left">Noisy   </td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run_s40.zip">       16.09         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy_s40.zip">       16.09         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area_s40.zip">       16.09         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2_s40.zip">       16.09         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower_s40.zip">       16.09         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass_s40.zip">       16.09         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor_s40.zip">       16.09         </a></td>
+  <td>                                          16.09             </td>
+</tr>
+<tr align="center">
+  <td align="left">SPTWO </td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run_s40.zip">       29.02         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy_s40.zip">       28.79         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area_s40.zip">       31.32         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2_s40.zip">       32.37         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower_s40.zip">       32.61         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass_s40.zip">       31.80         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor_s40.zip">       30.61         </a></td>
+  <td>                                                        30.93             </td>
+</tr>
+<tr align="center">
+  <td align="left">V-BM3D-np </td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run_s40.zip">       28.73         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy_s40.zip">       27.93         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area_s40.zip">       33.00         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2_s40.zip">       32.57         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower_s40.zip">       32.39         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass_s40.zip">       33.38         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor_s40.zip">       29.80         </a></td>
+  <td>                                                        31.11             </td>
+</tr>
+<tr align="center">
+  <td align="left">V-BM4D-mp </td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run_s40.zip">       28.72         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy_s40.zip">       27.99         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area_s40.zip">       32.62         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2_s40.zip">       32.93         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower_s40.zip">       33.66         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass_s40.zip">       33.68         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor_s40.zip">       30.20         </a></td>
+  <td>                                                        31.40             </td>
+</tr>
+<tr align="center">
+  <td align="left">VNLB</td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run_s40.zip"><b>    29.88     </b></a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy_s40.zip"><b>    29.28     </b></a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area_s40.zip"><b>    34.68     </b></a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2_s40.zip"><b>    34.65     </b></a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower_s40.zip">       35.44         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass_s40.zip">       34.18         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor_s40.zip"><b>    32.58     </b></a></td>
+  <td>                                             <b>    32.95     </b>    </td>
+</tr>
+<tr align="center">
+  <td align="left">VNLDCT</td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run_s40.zip">       29.32         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy_s40.zip">       28.73         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area_s40.zip">       34.14         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2_s40.zip">       34.23         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower_s40.zip">       34.92         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass_s40.zip">       33.76         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor_s40.zip">       31.95         </a></td>
+  <td>                                                    32.43             </td>
+</tr>
+<tr align="center">
+  <td align="left">BM4D-OF</td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/crowd_run_s40.zip">       29.39         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/park_joy_s40.zip">       28.70         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/pedestrian_area_s40.zip">       34.57         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/station2_s40.zip">       34.46         </a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/sunflower_s40.zip"><b>    35.78     </b></a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/touchdown_pass_s40.zip"><b>    34.67     </b></a></td>
+  <td><a href="http://dev.ipol.im/~pariasm/video_denoising_models/download/tractor_s40.zip">       32.09         </a></td>
+  <td>                                                    32.81             </td>
+</tr>
+
+</tbody>
+</table>
+
+
+
+<br>
+<br-->
+
+
+<hr width="100%" size="1" align="left">
+<h2><b>Institutional acknowledgements<a name="ref_acknowledgements"></a> </b></h2>
+<br>
+
+<p class="style7" style="width:100%" align="justify">
+Work supported by IDEX  Paris-Saclay IDI 2016, ANR-11-IDEX-0003-02, ONR  grant N00014-17-1-2552,  CNES MISS project, DGA Astrid ANR-17-ASTR-0013-01, DGA ANR-16-DEFA-0004-01, and MENRT.
+
+
+</p></body></html>
