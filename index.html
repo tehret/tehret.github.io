@@ -2,10 +2,10 @@
 <html><head>
 <meta http-equiv="Content-Language" content="en-us">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="index_files/style.css">
+<link rel="stylesheet" type="text/css" href="nlk_files/style.css">
 
 
-<script src="index_files/video.js"></script>
+<script src="nlk_files/video.js"></script>
 <script type="text/javascript">
 
 function show_play(){
@@ -233,8 +233,8 @@ In this article we propose a new recursive video denoising method with high perf
 <br>
 
 <p class="style7" style="width:100%" align="justify">
-<a href="https://tehret.github.io/paper.pdf">
-Thibaud Ehret, Jean-Michel Morel, Pablo Arias
+<a href="https://tehret.github.io/nlk_files/paper.pdf">
+Thibaud Ehret, Jean-Michel Morel, Pablo Arias, 
 <em> Non-Local Kalman: a recursive video denoising algorithm</em>
 ICIP 2018.
 </a>
@@ -252,7 +252,7 @@ ICIP 2018.
 <div align="center">
   <div class="style6" width="20em">
     <br>
-    <b>Results on the <em>pedestrian area</em> test sequence with a noise of standard deviation 30.</b>
+    <b>Results on the <em>pedestrian area</em> test sequence with:</b>
     <br>
   </div>
 
@@ -270,24 +270,20 @@ ICIP 2018.
 
 <div class="gallery" style="height:500px" align="left">
 	<ul class="index">
-		<li><a href="#">BM4D-OF<span><video controls="controls" height="500">
-	<source src="index_files/bm4dof_pedestrian_area_s20.mp4">
+		<li><a href="#">NOISY σ=30<span><video controls="controls" height="500">
+	<source src="index_files/noisy_pedestrian.mp4">
 	Your browser does not support the video tag.
       </video></span></a></li>
-		<li><a href="#">NOISY σ=20<span><video controls="controls" height="500">
-	<source src="index_files/noisy_pedestrian_area_s20.mp4">
+		<li><a href="#">VBM3D<span><video controls="controls" height="500">
+	<source src="index_files/vbm3d_pedestrian.mp4">
 	Your browser does not support the video tag.
       </video></span></a></li>
-		<li><a href="#">VNLDCT<span><video controls="controls" height="500">
-	<source src="index_files/vnldct_pedestrian_area_s20.mp4">
+		<!--li><a href="#">NL-Kalman<span><video controls="controls" height="500">
+	<source src="index_files/nlk_pedestrian.mp4">
 	Your browser does not support the video tag.
-      </video></span></a></li>
-		<li><a href="#">VNLB<span><video controls="controls" height="500">
-	<source src="index_files/vnlb_pedestrian_area_s20.mp4">
-	Your browser does not support the video tag.
-      </video></span></a></li>
-		<li><a href="#">SPTWO<span><video controls="controls" height="500">
-	<source src="index_files/sptwo_pedestrian_area_s20.mp4">
+      </video></span></a></li-->
+		<li><a href="#">NL-Kalman (OF oracle)<span><video controls="controls" height="500">
+	<source src="index_files/nlkof_pedestrian.mp4">
 	Your browser does not support the video tag.
       </video></span></a></li>
 	</ul>
