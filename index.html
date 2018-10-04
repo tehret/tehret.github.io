@@ -252,7 +252,7 @@ ICIP 2018.
 <div align="center">
   <div class="style6" width="20em">
     <br>
-    <b>Results on the <em>pedestrian area</em> test sequence with:</b>
+    <b>Results on the <em>pedestrian area</em> test sequence:</b>
     <br>
   </div>
 
@@ -278,22 +278,108 @@ ICIP 2018.
 	<source src="nlk_files/pedestrian_vbm3d.mp4">
 	Your browser does not support the video tag.
       </video></span></a></li>
-		<!--li><a href="#">NL-Kalman<span><video controls="controls" height="500">
-	<source src="nlk_files/nlk_pedestrian.mp4">
+		<li><a href="#">NL-Kalman<span><video controls="controls" height="500">
+	<source src="nlk_files/pedestrian_nlk.mp4">
 	Your browser does not support the video tag.
-      </video></span></a></li-->
+      </video></span></a></li>
 		<li><a href="#">NL-Kalman (OF oracle)<span><video controls="controls" height="500">
-	<source src="nlk_files/nlkof_pedestrian.mp4">
+	<source src="nlk_files/pedestrian_nlkalman.mp4">
 	Your browser does not support the video tag.
       </video></span></a></li>
 	</ul>
 </div>
 
+</div>
+<br>
+<br>
+
+<div align="center">
+  <div class="style6" width="20em">
+    <br>
+    <b>Results on the <em>crowd run</em> test sequence:</b>
+    <br>
+  </div>
+
+<table>
+   <tbody><tr>
+    <td> 
+      <button id="restart_all" onclick="restart_all_videos()">◼</button> 
+<!--      <button id="rew_all" onclick="skip_all_videos(-3);" border="0"> &lt;&lt; </button> -->
+      <button id="rew_all" onclick="seek_all_videos(0);" border="0"> &lt;&lt; </button>
+      <button id="play_all" onclick="play_all_videos();" border="0"> ▶</button>
+<!--      <button id="fastFwd_all" onclick="skip_all_videos(3);"> &gt;&gt; </button> -->
+    </td>
+  </tr>
+</tbody></table>
+
+<div class="gallery" style="height:500px" align="left">
+	<ul class="index">
+		<li><a href="#">NOISY σ=30<span><video controls="controls" height="500">
+	<source src="nlk_files/crowd_noisy.mp4">
+	Your browser does not support the video tag.
+      </video></span></a></li>
+		<li><a href="#">VBM3D<span><video controls="controls" height="500">
+	<source src="nlk_files/crowd_vbm3d.mp4">
+	Your browser does not support the video tag.
+      </video></span></a></li>
+		<li><a href="#">NL-Kalman<span><video controls="controls" height="500">
+	<source src="nlk_files/crowd_nlk.mp4">
+	Your browser does not support the video tag.
+      </video></span></a></li>
+		<li><a href="#">NL-Kalman (OF oracle)<span><video controls="controls" height="500">
+	<source src="nlk_files/crowd_nlkalman.mp4">
+	Your browser does not support the video tag.
+      </video></span></a></li>
+	</ul>
+</div>
 
 </div>
 <br>
 <br>
 
+<div align="center">
+  <div class="style6" width="20em">
+    <br>
+    <b>Results on the <em>station 2</em> test sequence:</b>
+    <br>
+  </div>
+
+<table>
+   <tbody><tr>
+    <td> 
+      <button id="restart_all" onclick="restart_all_videos()">◼</button> 
+<!--      <button id="rew_all" onclick="skip_all_videos(-3);" border="0"> &lt;&lt; </button> -->
+      <button id="rew_all" onclick="seek_all_videos(0);" border="0"> &lt;&lt; </button>
+      <button id="play_all" onclick="play_all_videos();" border="0"> ▶</button>
+<!--      <button id="fastFwd_all" onclick="skip_all_videos(3);"> &gt;&gt; </button> -->
+    </td>
+  </tr>
+</tbody></table>
+
+<div class="gallery" style="height:500px" align="left">
+	<ul class="index">
+		<li><a href="#">NOISY σ=30<span><video controls="controls" height="500">
+	<source src="nlk_files/station_noisy.mp4">
+	Your browser does not support the video tag.
+      </video></span></a></li>
+		<li><a href="#">VBM3D<span><video controls="controls" height="500">
+	<source src="nlk_files/station_vbm3d.mp4">
+	Your browser does not support the video tag.
+      </video></span></a></li>
+		<li><a href="#">NL-Kalman<span><video controls="controls" height="500">
+	<source src="nlk_files/station_nlk.mp4">
+	Your browser does not support the video tag.
+      </video></span></a></li>
+		<li><a href="#">NL-Kalman (OF oracle)<span><video controls="controls" height="500">
+	<source src="nlk_files/station_nlkalman.mp4">
+	Your browser does not support the video tag.
+      </video></span></a></li>
+	</ul>
+</div>
+
+</div>
+<br>
+<br>
 
 
 <!--p class="style7" style="width:100%" align="justify">
