@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "Global patch search boosts video denoising"
+date:   2017-01-02 22:20:59 +00:00
+categories: research
+author: "Thibaud Ehret"
+subtitle: "Conference paper"
+venue: "VISAPP 2017"
+paper: https://www.scitepress.org/papers/2017/61756/61756.pdf
+authors: "<strong>Thibaud Ehret</strong>, Pablo Arias, Jean-Michel Morel"
+---
+We study the impact of the local search in patch-based video denoising and show how a global search can improve the quality of the result.

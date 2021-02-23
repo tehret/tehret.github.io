@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "Video Denoising by Combining Patch Search and CNNs"
+date:   2021-01-01 22:20:59 +00:00
+categories: research
+author: "Thibaud Ehret"
+subtitle: "Journal paper"
+venue: "JMIV"
+paper: https://arxiv.org/pdf/1811.12758
+code: https://github.com/axeldavy/vnlnet
+authors: "Axel Davy, <strong>Thibaud Ehret</strong>, Jean-Michel Morel, Pablo Arias, Gabriele Facciolo"
+---
+Video denoising using CNN and non-locality.

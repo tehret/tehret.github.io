@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "Joint Demosaicking and denoising by fine-tuning of bursts of raw images"
+date:   2019-01-09 22:20:59 +00:00
+categories: research
+author: "Thibaud Ehret"
+subtitle: "Conference paper"
+venue: "ICCV 2019"
+paper: http://openaccess.thecvf.com/content_ICCV_2019/papers/Ehret_Joint_Demosaicking_and_Denoising_by_Fine-Tuning_of_Bursts_of_Raw_ICCV_2019_paper.pdf
+poster: /pdfs/poster_m2m_iccv.pdf
+code: https://github.com/tehret/mosaic-to-mosaic
+authors: "<strong>Thibaud Ehret</strong>, Axel Davy, Pablo Arias, Gabriele Facciolo"
+---
+Self-supervised learning of joint demosaicking and denoising using only raw bursts.

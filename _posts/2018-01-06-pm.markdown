@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "On the convergence of PatchMatch and its variants"
+date:   2018-01-06 22:20:59 +00:00
+categories: research
+author: "Thibaud Ehret"
+subtitle: "Conference paper"
+venue: "CVPR 2018"
+paper: http://openaccess.thecvf.com/content_cvpr_2018/papers/Ehret_On_the_Convergence_CVPR_2018_paper.pdf
+poster: /pdfs/poster_pm_cvpr.pdf
+authors: "<strong>Thibaud Ehret</strong>, Pablo Arias"
+---
+A theoretical analysis of PatchMatch.
