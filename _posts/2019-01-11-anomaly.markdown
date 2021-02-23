@@ -6,6 +6,7 @@ categories: research
 author: "Thibaud Ehret"
 subtitle: "Journal paper"
 venue: "JMIV"
+image: /images/anomaly.png
 paper: https://arxiv.org/pdf/1808.02564
 code: https://www.ipol.im/pub/art/2019/263/
 authors: "<strong>Thibaud Ehret</strong>, Axel Davy, Mauricio Delbracio, Jean-Michel Morel"

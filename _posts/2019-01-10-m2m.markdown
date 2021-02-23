@@ -6,6 +6,7 @@ categories: research
 author: "Thibaud Ehret"
 subtitle: "Conference paper"
 venue: "ICCV 2019"
+image: /images/m2m.png
 paper: http://openaccess.thecvf.com/content_ICCV_2019/papers/Ehret_Joint_Demosaicking_and_Denoising_by_Fine-Tuning_of_Bursts_of_Raw_ICCV_2019_paper.pdf
 poster: /pdfs/poster_m2m_iccv.pdf
 code: https://github.com/tehret/mosaic-to-mosaic

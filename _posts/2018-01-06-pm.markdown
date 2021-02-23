@@ -6,6 +6,7 @@ categories: research
 author: "Thibaud Ehret"
 subtitle: "Conference paper"
 venue: "CVPR 2018"
+image: /images/pm.png
 paper: http://openaccess.thecvf.com/content_cvpr_2018/papers/Ehret_On_the_Convergence_CVPR_2018_paper.pdf
 poster: /pdfs/poster_pm_cvpr.pdf
 authors: "<strong>Thibaud Ehret</strong>, Pablo Arias"

@@ -6,6 +6,7 @@ categories: research
 author: "Thibaud Ehret"
 subtitle: "Conference paper"
 venue: "VISAPP 2017"
+image: /images/global.png
 paper: https://www.scitepress.org/papers/2017/61756/61756.pdf
 authors: "<strong>Thibaud Ehret</strong>, Pablo Arias, Jean-Michel Morel"
 ---

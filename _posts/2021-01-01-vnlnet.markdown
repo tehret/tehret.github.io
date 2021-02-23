@@ -6,6 +6,7 @@ categories: research
 author: "Thibaud Ehret"
 subtitle: "Journal paper"
 venue: "JMIV"
+image: /images/vnlnet.png
 paper: https://arxiv.org/pdf/1811.12758
 code: https://github.com/axeldavy/vnlnet
 authors: "Axel Davy, <strong>Thibaud Ehret</strong>, Jean-Michel Morel, Pablo Arias, Gabriele Facciolo"

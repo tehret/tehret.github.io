@@ -5,9 +5,11 @@ date:   2018-01-06 22:21:59 +00:00
 categories: research
 author: "Thibaud Ehret"
 subtitle: "Conference paper"
+image: /images/nlk.png
 venue: "ICIP 2018"
-paper: https://tehret.github.io/nlkalman/
+paper: https://tehret.github.io/nlk_files/nlkalman_icip2018.pdf
 poster: /pdfs/poster_nlk_icip.pdf
 authors: "<strong>Thibaud Ehret</strong>, Jean-Michel Morel, Pablo Arias"
 ---
 We propose a new recursive video denoising method combining non-local denoising principles with recursive video denoising.
+Project website with video examples: [https://tehret.github.io/nlkalman/](https://tehret.github.io/nlkalman/){:target="_blank"}

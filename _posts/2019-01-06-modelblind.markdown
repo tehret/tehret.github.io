@@ -6,6 +6,7 @@ categories: research
 author: "Thibaud Ehret"
 subtitle: "Conference paper"
 venue: "CVPR 2019"
+image: /images/modelb.png
 paper: https://openaccess.thecvf.com/content_CVPR_2019/papers/Ehret_Model-Blind_Video_Denoising_via_Frame-To-Frame_Training_CVPR_2019_paper.pdf
 poster: /pdfs/poster_modelblind_cvpr.pdf
 code: https://github.com/tehret/blind-denoising
