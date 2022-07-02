@@ -8,6 +8,7 @@ subtitle: "Conference paper"
 venue: "CVPRW 2022"
 image: /images/satnerf.png
 paper: https://openaccess.thecvf.com/content/CVPR2022W/EarthVision/papers/Mari_Sat-NeRF_Learning_Multi-View_Satellite_Photogrammetry_With_Transient_Objects_and_Shadow_CVPRW_2022_paper.pdf
+code: https://github.com/centreborelli/satnerf
 authors: "Roger Marí, Gabriele Facciolo, <strong>Thibaud Ehret</strong>"
 ---
-NeRF for 3D modeling of satellite scenes.
+NeRF for 3D modeling of satellite scenes. Project page: https://centreborelli.github.io/satnerf/
