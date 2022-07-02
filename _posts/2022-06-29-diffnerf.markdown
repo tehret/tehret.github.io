@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "NeRF, meet differential geometry!"
+date:   2022-06-29 22:20:59 +00:00
+categories: research
+author: "Thibaud Ehret"
+subtitle: "Preprint"
+image: /images/diffnerf.png
+paper: https://arxiv.org/pdf/2206.14938
+authors: "<strong>Thibaud Ehret</strong>, Roger Marí, Gabriele Facciolo"
+---
+Introducing differential geometry tools to NeRFs.

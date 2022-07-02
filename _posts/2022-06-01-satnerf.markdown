@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "Sat-NeRF: Learning Multi-View Satellite Photogrammetry With Transient Objects and Shadow Modeling Using RPC Cameras"
+date:   2022-06-01 22:20:59 +00:00
+categories: research
+author: "Roger Marí"
+subtitle: "Conference paper"
+venue: "CVPRW 2022"
+image: /images/satnerf.png
+paper: https://openaccess.thecvf.com/content/CVPR2022W/EarthVision/papers/Mari_Sat-NeRF_Learning_Multi-View_Satellite_Photogrammetry_With_Transient_Objects_and_Shadow_CVPRW_2022_paper.pdf
+authors: "Roger Marí, Gabriele Facciolo, <strong>Thibaud Ehret</strong>"
+---
+NeRF for 3D modeling of satellite scenes.

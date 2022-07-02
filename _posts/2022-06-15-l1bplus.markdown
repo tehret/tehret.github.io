@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "L1B+: A Perfect Sensor Localization Model for Simple Satellite Stereo Reconstruction From Push-frame Image Strips"
+date:   2022-06-15 22:20:59 +00:00
+categories: research
+author: "Roger Marí"
+subtitle: "Conference paper"
+venue: "ISPRS 2022"
+image: /images/l1bplus.png
+paper: https://www.researchgate.net/publication/360665303_L1B_A_PERFECT_SENSOR_LOCALIZATION_MODEL_FOR_SIMPLE_SATELLITE_STEREO_RECONSTRUCTION_FROM_PUSH-FRAME_IMAGE_STRIPS/fulltext/62845346a5268672baf91e64/L1B-A-PERFECT-SENSOR-LOCALIZATION-MODEL-FOR-SIMPLE-SATELLITE-STEREO-RECONSTRUCTION-FROM-PUSH-FRAME-IMAGE-STRIPS.pdf?origin=publication_detail
+authors: "Roger Marí, <strong>Thibaud Ehret</strong>, Jérémy Anger, Carlo de Franchis, Gabriele Facciolo"
+---
+We emulates a perfect sensor to generate a single image strip from multiple image push-frame strips.

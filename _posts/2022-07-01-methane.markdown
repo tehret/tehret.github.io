@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "Global Tracking and Quantification of Oil and Gas Methane Emissions from Recurrent Sentinel-2 Imagery"
+date:   2022-07-01 22:20:59 +00:00
+categories: research
+author: "Thibaud Ehret"
+subtitle: "Journal paper"
+venue: "ACS"
+image: /images/methane.png
+paper: https://arxiv.org/pdf/2110.11832
+authors: "<strong>Thibaud Ehret</strong>, Aurélien De Truchis, Matthieu Mazzolini, Jean-Michel Morel, Alexandre d'Aspremont, Thomas Lauvaux, Gabriele Facciolo"
+---
+A study of super-emission of methane emissions related to oil and gas in the world.
